@@ -1,16 +1,26 @@
 import { useEffect, useRef, useState } from 'react';
-import { MantineProvider, AppShell, Container, Title, Text, Flex } from '@mantine/core';
+import { MantineProvider, Container, Title, Text, Flex, ActionIcon, Tooltip } from '@mantine/core';
 import axios from 'axios';
 import { ChatMessage } from './components/ChatMessage';
 import { ChatInput } from './components/ChatInput';
+import { ChatSidebar } from './components/ChatSidebar';
 import type { ChatMessage as ChatMessageType } from './types';
-import { IconBrain } from '@tabler/icons-react';
+import { IconBrain, IconPlus } from '@tabler/icons-react';
 
 const API_BASE_URL = 'http://localhost:3000/api';
 
+interface ChatSession {
+    id: string;
+    messages: ChatMessageType[];
+    createdAt: Date;
+    title?: string;
+}
+
+const STORAGE_KEY = 'chat_sessions';
+
 export default function App() {
-    const [sessionId, setSessionId] = useState<string | null>(null);
-    const [messages, setMessages] = useState<ChatMessageType[]>([]);
+    const [sessions, setSessions] = useState<ChatSession[]>([]);
+    const [currentSessionId, setCurrentSessionId] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(false);
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -20,30 +30,107 @@ export default function App() {
 
     useEffect(() => {
         scrollToBottom();
-    }, [messages]);
+    }, [sessions]);
+
+    // Load sessions from localStorage
+    // Load sessions from the server
+    const loadSessions = async () => {
+        try {
+            const response = await axios.get(`${API_BASE_URL}/chat/sessions`);
+            const sessions = response.data.sessions.map((session: any) => ({
+                ...session,
+                createdAt: new Date(session.createdAt)
+            }));
+            setSessions(sessions);
+            if (sessions.length > 0 && !currentSessionId) {
+                setCurrentSessionId(sessions[sessions.length - 1].id);
+            }
+        } catch (error) {
+            console.error('Error loading sessions:', error);
+        }
+    };
 
     useEffect(() => {
-        const createSession = async () => {
+        loadSessions();
+    }, []);
+
+    // Load chat history when switching sessions
+    useEffect(() => {
+        const loadChatHistory = async () => {
+            if (!currentSessionId) return;
+            
             try {
-                const response = await axios.post(`${API_BASE_URL}/chat/session`);
-                setSessionId(response.data.sessionId);
+                const response = await axios.get(`${API_BASE_URL}/chat/session/${currentSessionId}`);
+                const session = {
+                    ...response.data,
+                    createdAt: new Date(response.data.createdAt)
+                };
+                setSessions(prev => prev.map(s => 
+                    s.id === currentSessionId ? session : s
+                ));
             } catch (error) {
-                console.error('Error creating session:', error);
+                console.error('Error loading chat history:', error);
             }
         };
 
-        createSession();
-    }, []);
+        loadChatHistory();
+    }, [currentSessionId]);
+
+    const createNewSession = async () => {
+        try {
+            const response = await axios.post(`${API_BASE_URL}/chat/session`);
+            const newSession: ChatSession = {
+                id: response.data.sessionId,
+                messages: [],
+                createdAt: new Date(),
+                title: 'New Chat'
+            };
+            setSessions(prev => [...prev, newSession]);
+            setCurrentSessionId(newSession.id);
+        } catch (error) {
+            console.error('Error creating session:', error);
+        }
+    };
+
+    // useEffect(() => {
+    //     if (sessions.length === 0) {
+    //         createNewSession();
+    //     }
+    // }, []);
+
+    const updateSessionTitle = (sessionId: string, messages: ChatMessageType[]) => {
+        if (messages.length === 1 && messages[0].role === 'user') {
+            const title = messages[0].content.slice(0, 30) + (messages[0].content.length > 30 ? '...' : '');
+            setSessions(prev => prev.map(session => 
+                session.id === sessionId 
+                    ? { ...session, title }
+                    : session
+            ));
+        }
+    };
 
     const handleSendMessage = async (content: string) => {
-        if (!sessionId) return;
+        if (!currentSessionId) return;
 
         const userMessage: ChatMessageType = { role: 'user', content };
-        setMessages(prev => [...prev, userMessage]);
+        
+        setSessions(prev => {
+            const newSessions = prev.map(session => 
+                session.id === currentSessionId 
+                    ? { ...session, messages: [...session.messages, userMessage] }
+                    : session
+            );
+            const currentSession = prev.find(s => s.id === currentSessionId);
+            if (currentSession) {
+                updateSessionTitle(currentSessionId, [...currentSession.messages, userMessage]);
+            }
+            return newSessions;
+        });
+        
         setIsLoading(true);
 
         try {
-            const response = await axios.post(`${API_BASE_URL}/chat/${sessionId}`, {
+            const response = await axios.post(`${API_BASE_URL}/chat/${currentSessionId}`, {
                 message: content
             });
 
@@ -52,24 +139,51 @@ export default function App() {
                 content: response.data.response
             };
 
-            setMessages(prev => [...prev, assistantMessage]);
+            setSessions(prev => prev.map(session => 
+                session.id === currentSessionId 
+                    ? { ...session, messages: [...session.messages, assistantMessage] }
+                    : session
+            ));
         } catch (error) {
             console.error('Error sending message:', error);
             const errorMessage: ChatMessageType = {
                 role: 'assistant',
                 content: 'Sorry, there was an error processing your request. Please try again.'
             };
-            setMessages(prev => [...prev, errorMessage]);
+            setSessions(prev => prev.map(session => 
+                session.id === currentSessionId 
+                    ? { ...session, messages: [...session.messages, errorMessage] }
+                    : session
+            ));
         } finally {
             setIsLoading(false);
         }
     };
 
-    return (
+    const handleDeleteChat = async (sessionId: string) => {
+        try {
+            await axios.delete(`${API_BASE_URL}/chat/session/${sessionId}`);
+            setSessions(prev => prev.filter(session => session.id !== sessionId));
+            if (currentSessionId === sessionId) {
+                const remainingSessions = sessions.filter(session => session.id !== sessionId);
+                if (remainingSessions.length > 0) {
+                    setCurrentSessionId(remainingSessions[remainingSessions.length - 1].id);
+                } else {
+                    createNewSession();
+                }
+            }
+        } catch (error) {
+            console.error('Error deleting chat:', error);
+        }
+    };
+
+    const currentSession = sessions.find(session => session.id === currentSessionId);
+
+  return (
         <MantineProvider
             theme={{
                 colorScheme: 'dark',
-                primaryColor: 'blue',
+                primaryColor: 'teal',
                 colors: {
                     dark: [
                         '#C1C2C5',
@@ -86,52 +200,98 @@ export default function App() {
                 },
             }}
         >
-            <div className="chat-container">
-                <nav className="nav-bar">
-                    <Container size="lg">
-                        <Flex align="center" gap="md" style={{ height: '100%' }}>
-                            <Title order={1} size="h3">Product Catalog Assistant</Title>
-                        </Flex>
-                    </Container>
-                </nav>
-
-                <main className="main-content">
-                    <div className="messages-container">
-                        {messages.length === 0 ? (
-                            <div className="welcome-screen">
-                                <IconBrain size={64} color="#10a37f" />
-                                <Title order={2} className="welcome-title">
-                                    How can I help you today?
-                                </Title>
-                                <Text size="lg" color="dimmed" className="welcome-text">
-                                    Ask me anything about our products. I can help you find products,
-                                    compare specifications, and make recommendations based on your needs.
-                                </Text>
-                            </div>
-                        ) : (
-                            <div className="messages-list">
-                                {messages.map((message, index) => (
-                                    <div 
-                                        key={index} 
-                                        className={`message-wrapper ${message.role}`}
-                                    >
-                                        <Container size="lg">
-                                            <ChatMessage message={message} />
-                                        </Container>
-                                    </div>
-                                ))}
-                                <div ref={messagesEndRef} />
-                            </div>
-                        )}
-                    </div>
-
-                    <div className="input-container">
+            <div className="app-container">
+                <ChatSidebar
+                    sessions={sessions}
+                    currentSessionId={currentSessionId || ''}
+                    onNewChat={createNewSession}
+                    onSelectChat={setCurrentSessionId}
+                    onDeleteChat={handleDeleteChat}
+                />
+                <div className="chat-container">
+                    <nav className="nav-bar">
                         <Container size="lg">
-                            <ChatInput onSend={handleSendMessage} isLoading={isLoading} />
+                            <Flex align="center" style={{ height: '100%', display: 'flex', gap: '20px', justifyContent: 'space-between' }}>
+                                <Flex align="center" style={{ height: '100%', display: 'flex', gap: '20px', justifyContent: 'space-between' }}>
+                                    <IconBrain size={32} color="#10a37f" />
+                                    <Title order={1} size="h3">Product Catalog Assistant</Title>
+                                </Flex>
+                                <Tooltip label="New Chat">
+                                    <ActionIcon 
+                                        size="lg" 
+                                        variant="subtle" 
+                                        onClick={createNewSession}
+                                        className="new-chat-button"
+                                        style={{ border: 'none' }}
+                                    >
+                                        <IconPlus size={20} />
+                                    </ActionIcon>
+                                </Tooltip>
+                            </Flex>
                         </Container>
-                    </div>
-                </main>
-            </div>
+                    </nav>
+
+                    <main className="main-content">
+                        <div className="messages-container">
+                            {(!currentSession || currentSession.messages.length === 0) ? (
+                                <div className="welcome-screen">
+                                    <IconBrain size={64} color="#10a37f" />
+                                    <Title order={2} className="welcome-title">
+                                        How can I help you today?
+                                    </Title>
+                                    <Text size="lg" color="dimmed" className="welcome-text">
+                                        Ask me anything about our products. I can help you find products,
+                                        compare specifications, and make recommendations based on your needs.
+                                    </Text>
+                                </div>
+                            ) : (
+                                <div className="messages-list">
+                                    {currentSession.messages.map((message, index) => (
+                                        <div 
+                                            key={index} 
+                                            className={`message-wrapper ${message.role}`}
+                                        >
+                                            <Container size="lg">
+                                                <ChatMessage message={message} />
+                                            </Container>
+                                        </div>
+                                    ))}
+                                    <div ref={messagesEndRef} />
+                                </div>
+                            )}
+                        </div>
+
+                        <div className="input-container">
+                            <Container size="lg">
+                                <ChatInput onSend={handleSendMessage} isLoading={isLoading} />
+                            </Container>
+                        </div>
+                    </main>
+      </div>
+      </div>
+            <style jsx>{`
+                .app-container {
+                    display: flex;
+                    min-height: 100vh;
+                }
+
+                .chat-container {
+                    flex: 1;
+                    margin-left: 260px;
+                    min-height: 100vh;
+                    background-color: #0f0f0f;
+                }
+
+                .new-chat-button {
+                    color: rgba(255,255,255,0.7);
+                    transition: all 0.2s ease;
+                }
+
+                .new-chat-button:hover {
+                    color: #10a37f;
+                    transform: scale(1.1);
+                }
+            `}</style>
         </MantineProvider>
     );
 }

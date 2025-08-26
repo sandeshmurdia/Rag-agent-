@@ -1,20 +1,22 @@
-export interface Product {
-    id: number;
-    title: string;
-    description: string;
-    category: string;
-    price: number;
-    features: string[];
-    specifications: Record<string, any>;
-}
-
 export interface ChatMessage {
     role: 'user' | 'assistant';
     content: string;
 }
 
-export interface QueryResponse {
-    isValid: boolean;
-    response: string;
-    format: 'text' | 'json' | 'table' | 'graph';
+export interface Product {
+    id: string;
+    name: string;
+    description: string;
+    price: number;
+    category: string;
+    [key: string]: any;
+}
+
+export interface ProductChunk {
+    id: string;
+    text: string;
+    metadata: {
+        productId: string;
+        [key: string]: any;
+    };
 }
