@@ -1,0 +1,660 @@
+{
+    "sessionId": "caa8a8fa-158a-4876-bd0a-a82378e9ab06-1754893761",
+    "optimizedEvents": [
+        {
+          "id": 1,
+          "title": "Premium Laptop Pro",
+          "description": "High-performance laptop with 16GB RAM, 512GB SSD, and 4K display",
+          "category": "Electronics",
+          "price": 1299.99,
+          "features": ["4K Display", "16GB RAM", "512GB SSD", "Intel i7", "12 Hour Battery"],
+          "specifications": {
+            "processor": "Intel i7 12th Gen",
+            "ram": "16GB DDR4",
+            "storage": "512GB NVMe SSD",
+            "display": "15.6 inch 4K",
+            "battery": "12 hours"
+          }
+        },
+        {
+          "id": 2,
+          "title": "Casual Comfort Hoodie",
+          "description": "Comfortable cotton blend hoodie perfect for everyday wear",
+          "category": "Clothing",
+          "price": 49.99,
+          "features": ["Feature A", "Cotton Blend", "Machine Washable", "Available in 5 colors"],
+          "specifications": {
+            "material": "80% Cotton, 20% Polyester",
+            "care": "Machine Washable",
+            "sizes": ["S", "M", "L", "XL"],
+            "colors": ["Black", "Grey", "Navy", "Red", "Green"]
+          }
+        },
+        {
+          "id": 3,
+          "title": "Smart Watch Elite",
+          "description": "Advanced smartwatch with health tracking and notifications",
+          "category": "Electronics",
+          "price": 199.99,
+          "features": ["Heart Rate Monitor", "Sleep Tracking", "GPS", "5 Day Battery", "Water Resistant"],
+          "specifications": {
+            "display": "1.4 inch AMOLED",
+            "battery": "5 days",
+            "sensors": ["Heart Rate", "GPS", "Accelerometer"],
+            "waterResistance": "5ATM"
+          }
+        },
+        {
+          "id": 4,
+          "title": "Wireless Earbuds Pro",
+          "description": "Premium wireless earbuds with noise cancellation",
+          "category": "Electronics",
+          "price": 89.99,
+          "features": ["Active Noise Cancellation", "30Hr Battery", "Water Resistant", "Touch Controls"],
+          "specifications": {
+            "battery": "6hrs (30hrs with case)",
+            "connectivity": "Bluetooth 5.0",
+            "features": ["ANC", "Touch Controls"],
+            "waterResistance": "IPX4"
+          }
+        },
+        {
+          "id": 5,
+          "title": "Ergonomic Office Chair",
+          "description": "Comfortable office chair with lumbar support and adjustable features",
+          "category": "Furniture",
+          "price": 299.99,
+          "features": ["Lumbar Support", "Adjustable Height", "360° Rotation", "Breathable Mesh"],
+          "specifications": {
+            "material": "Mesh and Metal",
+            "maxWeight": "300lbs",
+            "adjustments": ["Height", "Tilt", "Armrest"],
+            "warranty": "3 years"
+          }
+        },
+        {
+          "id": 6,
+          "title": "4K Ultra HD Smart TV 55\"",
+          "description": "55-inch 4K smart TV with HDR10+ and built-in streaming apps",
+          "category": "Electronics",
+          "price": 649.99,
+          "features": ["4K UHD", "HDR10+", "Dolby Atmos", "Voice Control"],
+          "specifications": {
+            "display": "55 inch LED",
+            "resolution": "3840 x 2160",
+            "refreshRate": "60Hz",
+            "os": "Google TV",
+            "ports": ["HDMI 2.1 x3", "USB x2", "Ethernet"]
+          }
+        },
+        {
+          "id": 7,
+          "title": "Stainless Steel Water Bottle 1L",
+          "description": "Insulated metal bottle keeps drinks cold for 24h and hot for 12h",
+          "category": "Outdoors",
+          "price": 24.99,
+          "features": ["BPA-Free", "Vacuum Insulated", "Sweat-Proof Finish"],
+          "specifications": {
+            "capacity": "1L",
+            "material": "18/8 Stainless Steel",
+            "insulation": "Double-wall vacuum",
+            "lid": "Leak-proof screw top",
+            "weight": "420g"
+          }
+        },
+        {
+          "id": 8,
+          "title": "Noise-Cancelling Headphones",
+          "description": "Over-ear ANC headphones with 35h battery life",
+          "category": "Electronics",
+          "price": 149.99,
+          "features": ["ANC", "Bluetooth 5.2", "Fast Charge", "Foldable"],
+          "specifications": {
+            "drivers": "40mm",
+            "battery": "35 hours",
+            "charging": "USB-C, 10 min = 5h",
+            "codecs": ["SBC", "AAC"],
+            "weight": "260g"
+          }
+        },
+        {
+          "id": 9,
+          "title": "Adjustable Dumbbell Set 52.5 lb",
+          "description": "Space-saving dumbbells with quick weight selection",
+          "category": "Fitness",
+          "price": 399.0,
+          "features": ["Quick Dial", "Space Saving", "Non-Slip Grip"],
+          "specifications": {
+            "weightRange": "5–52.5 lb each",
+            "increments": "2.5 lb",
+            "material": "Steel + ABS cradle",
+            "dimensions": "16.5 x 8 x 9 in"
+          }
+        },
+        {
+          "id": 10,
+          "title": "Robot Vacuum Cleaner",
+          "description": "Wi-Fi robot vacuum with mapping and auto-recharge",
+          "category": "Home Appliances",
+          "price": 279.99,
+          "features": ["App Control", "Auto-Dock", "Mapping", "Slim Profile"],
+          "specifications": {
+            "suction": "2500 Pa",
+            "runtime": "120 minutes",
+            "binCapacity": "0.6L",
+            "height": "7.8 cm",
+            "compatibility": ["Alexa", "Google Assistant"]
+          }
+        },
+        {
+          "id": 11,
+          "title": "Professional Blender 1500W",
+          "description": "Commercial-grade blender for smoothies, soups, and ice",
+          "category": "Kitchen",
+          "price": 169.99,
+          "features": ["1500W Motor", "6-Blade Assembly", "Pulse Function"],
+          "specifications": {
+            "jar": "2.0L BPA-free Tritan",
+            "speedSettings": 10,
+            "voltage": "110–240V",
+            "dimensions": "20 x 22 x 45 cm"
+          }
+        },
+        {
+          "id": 12,
+          "title": "Air Fryer XL 6.5 Qt",
+          "description": "Large-capacity air fryer with presets and non-stick basket",
+          "category": "Kitchen",
+          "price": 119.99,
+          "features": ["Rapid Air Tech", "8 Presets", "Dishwasher-Safe Basket"],
+          "specifications": {
+            "capacity": "6.5 Qt",
+            "tempRange": "80–200°C",
+            "power": "1700W",
+            "timer": "60 minutes",
+            "coating": "PFOA-free non-stick"
+          }
+        },
+        {
+          "id": 13,
+          "title": "Compact Mirrorless Camera",
+          "description": "24MP mirrorless camera with 4K video and flip screen",
+          "category": "Electronics",
+          "price": 749.0,
+          "features": ["4K30 Video", "Dual Pixel AF", "Wi-Fi/Bluetooth"],
+          "specifications": {
+            "sensor": "24.2MP APS-C",
+            "mount": "Interchangeable",
+            "display": "3\" tilting",
+            "storage": ["SD/SDHC/SDXC UHS-I"],
+            "weight": "405g (body)"
+          }
+        },
+        {
+          "id": 14,
+          "title": "Smart LED Bulb (4-Pack)",
+          "description": "Color-changing bulbs with app and voice control",
+          "category": "Smart Home",
+          "price": 39.99,
+          "features": ["16M Colors", "Dimmable", "Schedules", "Voice Control"],
+          "specifications": {
+            "base": "E26",
+            "brightness": "800 lm",
+            "wattage": "9W (60W eq.)",
+            "connectivity": "2.4GHz Wi-Fi",
+            "lifetime": "25,000 hours"
+          }
+        },
+        {
+          "id": 15,
+          "title": "Standing Desk 48\"",
+          "description": "Electric height-adjustable desk with memory presets",
+          "category": "Furniture",
+          "price": 329.99,
+          "features": ["Dual Motor", "3 Memory Presets", "Anti-Collision"],
+          "specifications": {
+            "heightRange": "72–122 cm",
+            "desktop": "120 x 60 cm laminate",
+            "loadCapacity": "80 kg",
+            "noiseLevel": "<50 dB",
+            "warranty": "5 years frame"
+          }
+        },
+        {
+          "id": 16,
+          "title": "Mechanical Keyboard TKL",
+          "description": "Tenkeyless mechanical keyboard with hot-swappable switches",
+          "category": "Electronics",
+          "price": 109.99,
+          "features": ["Hot-Swap", "RGB Backlight", "PBT Keycaps"],
+          "specifications": {
+            "layout": "87-key TKL",
+            "switches": "MX-compatible",
+            "connection": ["USB-C wired", "Bluetooth 5.1"],
+            "pollingRate": "1000 Hz",
+            "weight": "880g"
+          }
+        },
+        {
+          "id": 17,
+          "title": "Wireless Router AX5400",
+          "description": "Wi-Fi 6 router with long-range coverage and OFDMA",
+          "category": "Electronics",
+          "price": 179.99,
+          "features": ["Wi-Fi 6", "MU-MIMO", "OFDMA", "App Setup"],
+          "specifications": {
+            "bands": "Dual-band 2.4/5GHz",
+            "ports": ["1x 2.5G WAN", "4x Gigabit LAN", "USB 3.0"],
+            "antennas": 6,
+            "security": "WPA3",
+            "coverage": "Up to 270 m²"
+          }
+        },
+        {
+          "id": 18,
+          "title": "Gaming Mouse Pro",
+          "description": "Lightweight FPS mouse with 26K DPI sensor",
+          "category": "Electronics",
+          "price": 69.99,
+          "features": ["26K DPI", "PTFE Feet", "Onboard Memory"],
+          "specifications": {
+            "sensor": "Optical 26,000 DPI",
+            "weight": "62g",
+            "buttons": 6,
+            "connection": ["USB-C wired", "2.4GHz wireless"],
+            "battery": "75 hours (wireless)"
+          }
+        },
+        {
+          "id": 19,
+          "title": "Noise-Isolating Earplugs",
+          "description": "Reusable silicone earplugs for concerts and sleep",
+          "category": "Health",
+          "price": 19.99,
+          "features": ["Reusable", "Low-Profile", "Carry Case"],
+          "specifications": {
+            "material": "Soft silicone",
+            "NRR": "23 dB",
+            "sizes": ["S", "M", "L"],
+            "care": "Washable"
+          }
+        },
+        {
+          "id": 20,
+          "title": "Smartphone Gimbal 3-Axis",
+          "description": "Portable stabilizer with tracking and time-lapse modes",
+          "category": "Electronics",
+          "price": 99.99,
+          "features": ["3-Axis Stabilization", "Object Tracking", "Foldable"],
+          "specifications": {
+            "payload": "150–290 g",
+            "battery": "10 hours",
+            "charging": "USB-C",
+            "modes": ["Pan", "Follow", "POV", "Time-lapse"],
+            "weight": "410 g"
+          }
+        },
+        {
+          "id": 21,
+          "title": "Nonstick Frying Pan 28cm",
+          "description": "Aluminum skillet with PFOA-free nonstick coating",
+          "category": "Kitchen",
+          "price": 34.99,
+          "features": ["Even Heating", "Oven Safe", "Dishwasher Safe"],
+          "specifications": {
+            "diameter": "28 cm",
+            "material": "Aluminum + nonstick",
+            "ovenSafe": "Up to 200°C",
+            "compatibility": ["Gas", "Electric", "Induction"]
+          }
+        },
+        {
+          "id": 22,
+          "title": "Memory Foam Pillow",
+          "description": "Ergonomic pillow for neck support and better sleep",
+          "category": "Home",
+          "price": 39.99,
+          "features": ["Cooling Cover", "Hypoallergenic", "Washable Cover"],
+          "specifications": {
+            "size": "60 x 40 x 12 cm",
+            "core": "Viscoelastic foam",
+            "cover": "Removable polyester",
+            "firmness": "Medium"
+          }
+        },
+        {
+          "id": 23,
+          "title": "Yoga Mat Pro 6mm",
+          "description": "Non-slip yoga mat with excellent cushioning",
+          "category": "Fitness",
+          "price": 29.99,
+          "features": ["Non-Slip", "Tear Resistant", "Lightweight"],
+          "specifications": {
+            "thickness": "6 mm",
+            "material": "TPE",
+            "dimensions": "183 x 61 cm",
+            "weight": "900 g"
+          }
+        },
+        {
+          "id": 24,
+          "title": "Running Shoes Trail",
+          "description": "All-terrain running shoes with rock plate and grip",
+          "category": "Footwear",
+          "price": 119.99,
+          "features": ["Breathable", "Rock Plate", "High Traction"],
+          "specifications": {
+            "upper": "Engineered mesh",
+            "midsole": "EVA foam",
+            "outsole": "Rubber lugs 4mm",
+            "drop": "8 mm",
+            "weight": "285 g (US 9)"
+          }
+        },
+        {
+          "id": 25,
+          "title": "Electric Toothbrush",
+          "description": "Sonic toothbrush with pressure sensor and 4 modes",
+          "category": "Health",
+          "price": 59.99,
+          "features": ["Pressure Sensor", "Timer", "Travel Case"],
+          "specifications": {
+            "strokesPerMin": "40,000",
+            "battery": "30 days",
+            "charging": "USB",
+            "modes": ["Clean", "White", "Gum Care", "Sensitive"]
+          }
+        },
+        {
+          "id": 26,
+          "title": "Cordless Drill Driver 20V",
+          "description": "Compact drill with 2 batteries and 350 in-lb torque",
+          "category": "Tools",
+          "price": 129.99,
+          "features": ["LED Light", "2-Speed", "Keyless Chuck"],
+          "specifications": {
+            "voltage": "20V",
+            "torque": "350 in-lb",
+            "chuck": "1/2 inch",
+            "batteries": "2x 2.0Ah Li-ion",
+            "charger": "Fast charger included"
+          }
+        },
+        {
+          "id": 27,
+          "title": "Car Dash Cam 2K",
+          "description": "Front dash camera with GPS and parking mode",
+          "category": "Automotive",
+          "price": 99.99,
+          "features": ["2K QHD", "GPS", "Parking Monitor"],
+          "specifications": {
+            "sensor": "Sony STARVIS",
+            "aperture": "f/1.8",
+            "viewAngle": "170°",
+            "storage": "MicroSD up to 256GB",
+            "power": "12V hardwire/cigarette"
+          }
+        },
+        {
+          "id": 28,
+          "title": "Portable SSD 1TB",
+          "description": "High-speed USB-C external SSD for backups and travel",
+          "category": "Electronics",
+          "price": 109.99,
+          "features": ["NVMe Speed", "Shock Resistant", "AES Encryption"],
+          "specifications": {
+            "capacity": "1TB",
+            "interface": "USB-C 3.2 Gen2",
+            "readSpeed": "1050 MB/s",
+            "writeSpeed": "1000 MB/s",
+            "dimensions": "57 x 50 x 9 mm"
+          }
+        },
+        {
+          "id": 29,
+          "title": "Graphic Tee Classic",
+          "description": "Soft cotton T-shirt with minimalist print",
+          "category": "Clothing",
+          "price": 19.99,
+          "features": ["Breathable", "Pre-Shrunk", "Regular Fit"],
+          "specifications": {
+            "material": "100% Cotton",
+            "sizes": ["S", "M", "L", "XL", "XXL"],
+            "care": "Cold wash, tumble low",
+            "colors": ["White", "Black", "Navy"]
+          }
+        },
+        {
+          "id": 30,
+          "title": "Leather Wallet RFID",
+          "description": "Slim bi-fold wallet with RFID blocking",
+          "category": "Accessories",
+          "price": 29.99,
+          "features": ["RFID Block", "Slim Fit", "Genuine Leather"],
+          "specifications": {
+            "slots": 8,
+            "material": "Top-grain leather",
+            "dimensions": "11 x 8.5 x 1.2 cm",
+            "weight": "80 g",
+            "colorOptions": ["Brown", "Black"]
+          }
+        },
+        {
+          "id": 31,
+          "title": "Camping Tent 4-Person",
+          "description": "All-season dome tent with rainfly and vestibule",
+          "category": "Outdoors",
+          "price": 169.99,
+          "features": ["Waterproof", "Easy Setup", "Ventilated"],
+          "specifications": {
+            "capacity": 4,
+            "hydrostaticHead": "3000 mm",
+            "poles": "Aluminum",
+            "weight": "4.2 kg",
+            "packedSize": "60 x 20 x 20 cm"
+          }
+        },
+        {
+          "id": 32,
+          "title": "E-Reader 6.8\"",
+          "description": "Glare-free e-ink reader with adjustable warm light",
+          "category": "Electronics",
+          "price": 149.99,
+          "features": ["Warm Light", "Weeks of Battery", "Water Resistant"],
+          "specifications": {
+            "display": "6.8\" 300 ppi e-ink",
+            "storage": "16GB",
+            "waterResistance": "IPX8",
+            "battery": "Up to 6 weeks",
+            "wireless": ["Wi-Fi 2.4/5GHz", "Bluetooth"]
+          }
+        },
+        {
+          "id": 33,
+          "title": "Espresso Machine Compact",
+          "description": "15-bar pump espresso maker with steam wand",
+          "category": "Kitchen",
+          "price": 179.99,
+          "features": ["15-Bar Pump", "Steam Wand", "Cup Warmer"],
+          "specifications": {
+            "power": "1350W",
+            "boiler": "Thermoblock",
+            "tank": "1.2L removable",
+            "portafilter": "51mm",
+            "dimensions": "28 x 23 x 31 cm"
+          }
+        },
+        {
+          "id": 34,
+          "title": "Air Purifier HEPA H13",
+          "description": "HEPA H13 purifier for rooms up to 500 sq ft",
+          "category": "Home Appliances",
+          "price": 129.99,
+          "features": ["HEPA H13", "Auto Mode", "Sleep Mode"],
+          "specifications": {
+            "CADR": "300 m³/h",
+            "coverage": "Up to 46 m²",
+            "filters": ["Pre", "HEPA H13", "Carbon"],
+            "noise": "22–50 dB",
+            "power": "45W"
+          }
+        },
+        {
+          "id": 35,
+          "title": "Men’s Chino Pants",
+          "description": "Stretch chinos suitable for office or casual wear",
+          "category": "Clothing",
+          "price": 39.99,
+          "features": ["Stretch Fabric", "Tapered Fit", "Wrinkle Resistant"],
+          "specifications": {
+            "material": "97% Cotton, 3% Spandex",
+            "sizes": ["28–40"],
+            "inseam": ["30", "32", "34"],
+            "care": "Machine wash warm"
+          }
+        },
+        {
+          "id": 36,
+          "title": "Women’s Running Leggings",
+          "description": "High-waisted leggings with phone pocket",
+          "category": "Clothing",
+          "price": 29.99,
+          "features": ["Moisture-Wicking", "4-Way Stretch", "Hidden Pocket"],
+          "specifications": {
+            "material": "Polyester/Spandex",
+            "rise": "High",
+            "sizes": ["XS", "S", "M", "L", "XL"],
+            "care": "Cold wash, line dry"
+          }
+        },
+        {
+          "id": 37,
+          "title": "Smart Plug Mini",
+          "description": "Wi-Fi plug for voice and app control of appliances",
+          "category": "Smart Home",
+          "price": 12.99,
+          "features": ["Energy Monitor", "Schedules", "Voice Control"],
+          "specifications": {
+            "maxLoad": "10A/1200W",
+            "connectivity": "2.4GHz Wi-Fi",
+            "compatibility": ["Alexa", "Google Assistant"],
+            "app": "iOS/Android"
+          }
+        },
+        {
+          "id": 38,
+          "title": "Portable Projector 1080p",
+          "description": "Compact projector with native 1080p and HDMI",
+          "category": "Electronics",
+          "price": 219.99,
+          "features": ["1080p Native", "Keystone", "Built-in Speaker"],
+          "specifications": {
+            "brightness": "350 ANSI lm",
+            "throwRatio": "1.4:1",
+            "ports": ["HDMI", "USB", "Audio out"],
+            "lampLife": "30,000 hours",
+            "weight": "1.2 kg"
+          }
+        },
+        {
+          "id": 39,
+          "title": "Electric Kettle 1.7L",
+          "description": "Fast-boil kettle with auto shut-off and scale filter",
+          "category": "Kitchen",
+          "price": 34.99,
+          "features": ["Auto Shut-Off", "Boil-Dry Protection", "360° Base"],
+          "specifications": {
+            "capacity": "1.7L",
+            "power": "2200W",
+            "material": "Stainless steel",
+            "cordStorage": true
+          }
+        },
+        {
+          "id": 40,
+          "title": "Fitness Tracker Band",
+          "description": "Lightweight tracker with SPO2 and 10-day battery",
+          "category": "Electronics",
+          "price": 49.99,
+          "features": ["SPO2", "Sleep Tracking", "Water Resistant"],
+          "specifications": {
+            "display": "AMOLED 1.1\"",
+            "battery": "10 days",
+            "waterResistance": "5ATM",
+            "sensors": ["Heart rate", "SPO2", "Accelerometer"]
+          }
+        },
+        {
+          "id": 41,
+          "title": "Chef’s Knife 8\"",
+          "description": "All-purpose kitchen knife with German steel blade",
+          "category": "Kitchen",
+          "price": 59.99,
+          "features": ["Full Tang", "Ergonomic Handle", "Razor Sharp"],
+          "specifications": {
+            "steel": "X50CrMoV15",
+            "hardness": "56 HRC",
+            "bladeLength": "8 inch",
+            "handle": "Pakkawood"
+          }
+        },
+        {
+          "id": 42,
+          "title": "Office Monitor 27\" QHD",
+          "description": "27-inch 1440p IPS monitor with adjustable stand",
+          "category": "Electronics",
+          "price": 229.99,
+          "features": ["QHD 1440p", "IPS Panel", "Height Adjust"],
+          "specifications": {
+            "resolution": "2560 x 1440",
+            "refreshRate": "75Hz",
+            "ports": ["HDMI", "DisplayPort", "USB-C (PD 65W)"],
+            "color": "99% sRGB"
+          }
+        },
+        {
+          "id": 43,
+          "title": "Dehumidifier 20 Pint",
+          "description": "Home dehumidifier with continuous drain option",
+          "category": "Home Appliances",
+          "price": 169.99,
+          "features": ["Auto Defrost", "Timer", "Washable Filter"],
+          "specifications": {
+            "capacityPerDay": "20 pints",
+            "coverage": "Up to 40 m²",
+            "tank": "2.5L",
+            "noise": "≤46 dB"
+          }
+        },
+        {
+          "id": 44,
+          "title": "Pet Hair Remover Roller",
+          "description": "Reusable lint roller for furniture and clothing",
+          "category": "Home",
+          "price": 16.99,
+          "features": ["Reusable", "No Adhesives", "Easy Clean"],
+          "specifications": {
+            "material": "ABS + nylon brush",
+            "use": "Upholstery, bedding, clothes",
+            "dimensions": "19 x 7 x 12 cm"
+          }
+        },
+        {
+          "id": 45,
+          "title": "Travel Backpack 30L",
+          "description": "Carry-on backpack with laptop sleeve and organizer",
+          "category": "Accessories",
+          "price": 79.99,
+          "features": ["Laptop Sleeve", "Water-Resistant", "Luggage Strap"],
+          "specifications": {
+            "capacity": "30L",
+            "fitsLaptop": "Up to 15.6\"",
+            "material": "600D polyester",
+            "dimensions": "48 x 32 x 18 cm",
+            "weight": "900 g"
+          }
+        }
+      ],      
+    "totalEvents": 45,
+    "optimizedAt": "2025-08-21T07:37:29.045Z"
+  }
