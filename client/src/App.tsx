@@ -168,8 +168,6 @@ export default function App() {
                 const remainingSessions = sessions.filter(session => session.id !== sessionId);
                 if (remainingSessions.length > 0) {
                     setCurrentSessionId(remainingSessions[remainingSessions.length - 1].id);
-                } else {
-                    createNewSession();
                 }
             }
         } catch (error) {
@@ -181,9 +179,14 @@ export default function App() {
 
   return (
         <MantineProvider
+            withGlobalStyles
+            withNormalizeCSS
             theme={{
-                colorScheme: 'dark',
+                defaultRadius: 'md',
+                white: '#fff',
+                black: '#1A1B1E',
                 primaryColor: 'teal',
+                primaryShade: { light: 6, dark: 8 },
                 colors: {
                     dark: [
                         '#C1C2C5',
@@ -196,8 +199,11 @@ export default function App() {
                         '#1A1B1E',
                         '#141517',
                         '#101113',
-                    ],
+                    ]
                 },
+                other: {
+                    colorScheme: 'dark'
+                }
             }}
         >
             <div className="app-container">
@@ -212,21 +218,11 @@ export default function App() {
                     <nav className="nav-bar">
                         <Container size="lg">
                             <Flex align="center" style={{ height: '100%', display: 'flex', gap: '20px', justifyContent: 'space-between' }}>
-                                <Flex align="center" style={{ height: '100%', display: 'flex', gap: '20px', justifyContent: 'space-between' }}>
+                                <Flex align="center" style={{ height: '100%', display: 'flex', gap: '20px', justifyContent: 'space-between' ,paddingLeft: '20px'}}>
                                     <IconBrain size={32} color="#10a37f" />
-                                    <Title order={1} size="h3">Product Catalog Assistant</Title>
+                                    <Title order={1} size="h3">Payment & Checkout Assistant</Title>
                                 </Flex>
-                                <Tooltip label="New Chat">
-                                    <ActionIcon 
-                                        size="lg" 
-                                        variant="subtle" 
-                                        onClick={createNewSession}
-                                        className="new-chat-button"
-                                        style={{ border: 'none' }}
-                                    >
-                                        <IconPlus size={20} />
-                                    </ActionIcon>
-                                </Tooltip>
+                                
                             </Flex>
                         </Container>
                     </nav>
@@ -277,9 +273,80 @@ export default function App() {
 
                 .chat-container {
                     flex: 1;
-                    margin-left: 260px;
+                    margin-left: 320px;
                     min-height: 100vh;
                     background-color: #0f0f0f;
+                    position: relative;
+                }
+
+                .nav-bar {
+                    position: sticky;
+                    top: 0;
+                    background-color: rgba(15,15,15,0.95);
+                    backdrop-filter: blur(10px);
+                    border-bottom: 1px solid rgba(255,255,255,0.1);
+                    padding: 16px 0;
+                    z-index: 100;
+                }
+
+                .main-content {
+                    min-height: calc(100vh - 70px);
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                .messages-container {
+                    flex: 1;
+                    padding: 20px 0;
+                }
+
+                .welcome-screen {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    min-height: 60vh;
+                    text-align: center;
+                    padding: 20px;
+                    gap: 20px;
+                }
+
+                .welcome-title {
+                    margin-top: 24px;
+                    color: rgba(255,255,255,0.9);
+                }
+
+                .welcome-text {
+                    max-width: 600px;
+                    line-height: 1.6;
+                }
+
+                .messages-list {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+                }
+
+                .message-wrapper {
+                    width: 100%;
+                    padding: 20px 0;
+                }
+
+                .message-wrapper.user {
+                    background-color: rgba(255,255,255,0.02);
+                }
+
+                .message-wrapper.assistant {
+                    background-color: transparent;
+                }
+
+                .input-container {
+                    position: sticky;
+                    bottom: 0;
+                    background-color: rgba(15,15,15,0.95);
+                    backdrop-filter: blur(10px);
+                    border-top: 1px solid rgba(255,255,255,0.1);
+                    padding: 20px 0;
                 }
 
                 .new-chat-button {

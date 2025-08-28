@@ -1,5 +1,5 @@
 import { IconPlus, IconMessage, IconTrash, IconClock } from '@tabler/icons-react';
-import { Text, Button, ScrollArea, Tooltip, Flex } from '@mantine/core';
+import { Text, Button, ScrollArea, Tooltip, Flex, Box } from '@mantine/core';
 
 interface ChatSession {
     id: string;
@@ -40,49 +40,50 @@ export function ChatSidebar({ sessions, currentSessionId, onNewChat, onSelectCha
         if (session.messages.length === 0) return 'New Chat';
         const firstUserMessage = session.messages.find(m => m.role === 'user');
         if (!firstUserMessage) return 'New Chat';
-        return firstUserMessage.content.slice(0, 30) + (firstUserMessage.content.length > 30 ? '...' : '');
+        return firstUserMessage.content.slice(0, 40) + (firstUserMessage.content.length > 40 ? '...' : '');
     };
 
     const sortedSessions = [...sessions].sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
 
     return (
-        <div className="chat-sidebar">
-            <div className="sidebar-header">
+        <Box className="chat-sidebar">
+            <Box className="sidebar-header">
                 <Button 
-                    leftIcon={<IconPlus size={16} />}
+                    leftIcon={<IconPlus size={10} />}
                     fullWidth
                     onClick={onNewChat}
                     className="new-chat-button"
+                    size="md"
+                    style={{ border: 'none' }}
                 >
                     New Chat
                 </Button>
-            </div>
-            <ScrollArea className="chat-list">
+            </Box>
+            <ScrollArea className="chat-list" scrollbarSize={6}>
                 {sortedSessions.map((session) => (
-                    <div
+                    <Box
                         key={session.id}
                         className={`chat-item ${session.id === currentSessionId ? 'active' : ''}`}
                         onClick={() => onSelectChat(session.id)}
                     >
-                        <div className="chat-item-content">
-                            <div className="chat-item-icon">
-                                <IconMessage size={16} className="chat-icon" />
-                            </div>
-                            <div className="chat-details">
-                                <Text size="sm" className="chat-title">
+                        <Flex className="chat-item-content" align="flex-start" style={{display: 'flex', gap: '10px'}}>
+                            <div style={{width: '100%'}}>
+                            <Box className="chat-item-icon">
+                                <IconMessage size={18} className="chat-icon" />
+                            </Box>
+                            <Box className="chat-details">
+                                <Text size="sm" className="chat-title" lineClamp={2}>
                                     {getChatTitle(session)}
                                 </Text>
                                 <Flex align="center" gap="xs" className="chat-meta">
-                                    <IconClock size={12} />
-                                    <Text size="xs" className="chat-date">
-                                        {formatDate(session.createdAt)}
-                                    </Text>
+                                    <IconClock size={14} />
                                     <Text size="xs" className="message-count">
                                         {session.messages.length} messages
                                     </Text>
                                 </Flex>
+                            </Box>
                             </div>
-                            <Tooltip label="Delete chat">
+                            <Tooltip label="Delete chat" position="right">
                                 <Button
                                     variant="subtle"
                                     size="xs"
@@ -95,20 +96,20 @@ export function ChatSidebar({ sessions, currentSessionId, onNewChat, onSelectCha
                                     <IconTrash size={16} />
                                 </Button>
                             </Tooltip>
-                        </div>
-                    </div>
+                        </Flex>
+                    </Box>
                 ))}
                 {sortedSessions.length === 0 && (
-                    <div className="no-chats">
-                        <Text color="dimmed" align="center" size="sm" style={{ padding: '20px' }}>
+                    <Box className="no-chats">
+                        <Text color="dimmed" align="center" size="sm">
                             No chats yet. Start a new conversation!
                         </Text>
-                    </div>
+                    </Box>
                 )}
             </ScrollArea>
             <style jsx>{`
                 .chat-sidebar {
-                    width: 260px;
+                    width: 320px;
                     height: 100vh;
                     background-color: #1a1b1e;
                     border-right: 1px solid rgba(255,255,255,0.1);
@@ -121,13 +122,20 @@ export function ChatSidebar({ sessions, currentSessionId, onNewChat, onSelectCha
                 }
 
                 .sidebar-header {
-                    padding: 16px;
+                    padding: 20px;
                     border-bottom: 1px solid rgba(255,255,255,0.1);
+                    background-color: rgba(26,27,30,0.95);
+                    backdrop-filter: blur(10px);
+                    position: sticky;
+                    top: 0;
+                    z-index: 1;
                 }
 
                 .new-chat-button {
                     background-color: #10a37f !important;
                     transition: all 0.2s ease;
+                    height: 44px !important;
+                    font-size: 15px !important;
                 }
 
                 .new-chat-button:hover {
@@ -141,10 +149,11 @@ export function ChatSidebar({ sessions, currentSessionId, onNewChat, onSelectCha
                 }
 
                 .chat-item {
-                    padding: 12px 16px;
+                    padding: 14px 16px;
                     cursor: pointer;
                     transition: all 0.2s ease;
                     border-bottom: 1px solid rgba(255,255,255,0.05);
+                    position: relative;
                 }
 
                 .chat-item:hover {
@@ -155,10 +164,19 @@ export function ChatSidebar({ sessions, currentSessionId, onNewChat, onSelectCha
                     background-color: rgba(16, 163, 127, 0.15);
                 }
 
+                .chat-item.active::before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    bottom: 0;
+                    width: 3px;
+                    background-color: #10a37f;
+                }
+
                 .chat-item-content {
-                    display: flex;
-                    align-items: flex-start;
-                    gap: 12px;
+                    gap: 14px;
+                    min-height: 50px;
                 }
 
                 .chat-item-icon {
@@ -168,34 +186,32 @@ export function ChatSidebar({ sessions, currentSessionId, onNewChat, onSelectCha
                     display: flex;
                     align-items: center;
                     justify-content: center;
+                    flex-shrink: 0;
                 }
 
                 .chat-icon {
                     color: rgba(255,255,255,0.7);
-                    flex-shrink: 0;
                 }
 
                 .chat-details {
                     flex: 1;
                     min-width: 0;
+                    padding-right: 8px;
                 }
 
                 .chat-title {
                     color: rgba(255,255,255,0.9);
                     font-size: 14px;
                     font-weight: 500;
-                    white-space: nowrap;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    margin-bottom: 4px;
+                    line-height: 1.4;
+                    margin-bottom: 6px;
+                    word-wrap: break-word;
                 }
 
                 .chat-meta {
-                    display: flex;
-                    align-items: center;
-                    gap: 8px;
                     color: rgba(255,255,255,0.5);
                     font-size: 12px;
+                    gap: 8px;
                 }
 
                 .chat-date {
@@ -212,9 +228,10 @@ export function ChatSidebar({ sessions, currentSessionId, onNewChat, onSelectCha
                     opacity: 0;
                     transition: all 0.2s ease;
                     color: rgba(255,255,255,0.5) !important;
-                    padding: 4px !important;
+                    padding: 6px !important;
                     height: auto !important;
                     min-height: 0 !important;
+                    background: transparent !important;
                 }
 
                 .chat-item:hover .delete-button {
@@ -224,14 +241,15 @@ export function ChatSidebar({ sessions, currentSessionId, onNewChat, onSelectCha
                 .delete-button:hover {
                     color: #ff4d4f !important;
                     background-color: rgba(255,77,79,0.1) !important;
+                    transform: scale(1.1);
                 }
 
                 .no-chats {
-                    padding: 20px;
+                    padding: 30px 20px;
                     text-align: center;
                     color: rgba(255,255,255,0.5);
                 }
             `}</style>
-        </div>
+        </Box>
     );
 }

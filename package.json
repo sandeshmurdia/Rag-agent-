@@ -8,7 +8,9 @@
     "start": "node dist/index.js",
     "dev": "tsx watch src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "ingest-optimized": "tsx src/ingest-optimized.ts"
+    "ingest-optimized": "tsx src/ingest-optimized.ts",
+    "clear-db": "tsx scripts/clear-chromadb.ts",
+    "clear-db-py": "python scripts/clear_db.py"
   },
   "keywords": [
     "ai",
@@ -22,6 +24,7 @@
   "dependencies": {
     "axios": "^1.11.0",
     "chromadb": "^1.8.1",
+    "chromadb-default-embed": "^2.14.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.18.3",
